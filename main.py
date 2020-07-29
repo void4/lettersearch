@@ -33,28 +33,28 @@ from itertools import combinations
 from random import choice
 
 
-for letter in sorted(cc.keys()):
+#for letter in sorted(cc.keys()):
 
-    print("FINDING", letter)
+#print("FINDING", letter)
 
-    possible = set(cc.keys())
+possible = set(cc.keys())
 
-    while len(possible) > 1:
-        for a in ccc.keys():
-            intersection = set(possible).intersection(set(a))
-            if len(intersection) == 0:
-                continue
-            ywlen = len(set(possible))
-            if (ywlen % 2 == 0 and len(intersection) == ywlen//2) or (ywlen % 2 == 1 and len(intersection) in [ywlen//2-1, ywlen//2+1]):
-                #print("newq", a, len(a), ccc[a])
-                question = choice(ccc[a])
-                break
+while len(possible) > 1:
+    for a in ccc.keys():
+        intersection = set(possible).intersection(set(a))
+        if len(intersection) == 0:
+            continue
+        ywlen = len(set(possible))
+        if (ywlen % 2 == 0 and len(intersection) == ywlen//2) or (ywlen % 2 == 1 and len(intersection) in [ywlen//2-1, ywlen//2+1]):
+            #print("newq", a, len(a), ccc[a])
+            question = choice(ccc[a])
+            break
 
-        print(possible, question, "?")
-        #if input().lower() in "y yes".split():
-        if letter in question:
-            possible = possible.intersection(set(question))
-        else:
-            possible = possible.difference(question)
+    print(possible, question, "?")
+    #if letter in question:
+    if input().lower() in "y yes".split():
+        possible = possible.intersection(set(question))
+    else:
+        possible = possible.difference(question)
 
-        print(possible)
+    print(possible)
